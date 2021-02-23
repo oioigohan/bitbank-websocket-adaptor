@@ -1,0 +1,6 @@
+PAIR = 'btc_jpy'
+AMOUNT = 0.0001
+SOCKET_LIMIT_SEC = 30
+ALPHA = 100
+BETA = 1
+GAMMA = 1
