@@ -1,12 +1,14 @@
 # bitbank-websocket-adaptor
 
-bitbankがWebSocketを介して公開している各種情報をrxを使ってリアルタイムに取得します
+bitbankがWebSocketを介して公開している各種情報をRxPYを使ってリアルタイムに取得します
 
 ## 利用するための環境構築
 
 エディター: Visual Studio Code
 
 pythonバージョン: 3.8.1
+
+<br/>
 
 `venv`で仮想環境を利用することを推奨します。<br/>
 仮想環境のディレクトリ名は任意ですが、`envs`にするとVSCodeが認識してくれます。
@@ -15,6 +17,7 @@ pythonバージョン: 3.8.1
 > py -3.8 -m venv envs
 ```
 
+<br/>
 
 `requirements.txt`をもとにモジュールをpip installします。
 
@@ -22,6 +25,7 @@ pythonバージョン: 3.8.1
 > pip install -r requirements.txt
 ```
 
+<br/>
 
 [bitbankのリポジトリ](https://github.com/bitbankinc/python-bitbankcc)から`python-bitbankcc`をpip installします。
 
@@ -29,6 +33,7 @@ pythonバージョン: 3.8.1
 > pip install git+https://github.com/bitbankinc/python-bitbankcc.git
 ```
 
+<br/>
 
 デフォルトではパブリックなWebAPIメソッドのみ利用する状態です。<br/>
 プライベートなWebAPIメソッドも利用可能ですが、<br/>
@@ -40,6 +45,7 @@ pythonバージョン: 3.8.1
 > python main.py
 ```
 
+<br/>
 
 デフォルトでは次のように、時刻とビットコインの最終売買価格の情報がリアルタイムに印字されます。
 
@@ -53,9 +59,11 @@ pythonバージョン: 3.8.1
 例えば`PriceLastBuyStream`はbitbankにおいてトレードされた最終買値です。<br/>
 これらはすべて`Observable`型で、ここではストリームと呼ぶことにしています。
 
+<br/>
 
 `mytrade.py`に記述できるストリームはstreams.pyに記述されているものです。
 
+<br/>
 
 また、取得するペアはデフォルトでは`btc/jpy`ですが、<br/>
 `parameters.py`にある定数`PAIR`の値を変更することでbitbankで公開されている別のペアを指定することも可能です。
@@ -66,7 +74,23 @@ pythonバージョン: 3.8.1
 bitbank取引所で表示されるよりも<br/>
 早く値が更新されるように思いました(1秒から5秒ほど)。
 
+<br/>
 
 単純に`python-bitbankcc`モジュールを使ったAPI連携をするよりも、<br/>
-websocketを取り入れた本モジュールのほうが早いレスポンスを得られるため、<br/>
+WebSocketを取り入れた本モジュールのほうが早いレスポンスを得られるため、<br/>
 よりリアルタイムに情報を得たいBOTの開発などでの有用性が見込めると考えられます
+
+## 工夫した点
+
+bitbank特有のWebSocketが30秒で切断されるという課題をRxPYを駆使することで解決しました。<br/>
+RxPYについてはAngularの学習で得たRxJSの知見をもとに実装を進めました。
+
+<br/>
+
+また、関心の分離を目的として、modelsやstreamsなど役割ごとにソースを分割することを意識しました。<br/>
+
+<br/>
+
+デフォルトではパブリックなWebAPIメソッドのみ利用するようにしていますが、プライベートメソッドにも
+アクセスできるように実装しています。<br/>
+これにより、Bot開発に関心があるほかの方でも好みの手法を組み立てやすいようにしています。
