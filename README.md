@@ -1,6 +1,6 @@
 # bitbank-websocket-adaptor.github.io
 
-bitbankが公開しているwebsocketからrxを使って各種情報をリアルタイムに取得します
+bitbankがWebSocketを介して公開している各種情報をrxを使ってリアルタイムに取得します
 
 ## 利用するための環境構築
 
