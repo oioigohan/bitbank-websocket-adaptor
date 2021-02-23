@@ -1,0 +1,2 @@
+# bitbank-websocket-adaptor.github.io
+bitbankが公開するWebSocketを介してBitcoinの価格をリアルタイムに印字する
