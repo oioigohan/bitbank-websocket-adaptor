@@ -27,8 +27,8 @@ pythonバージョン: 3.8.1
 仮想環境のディレクトリ名は任意ですが、`envs`にするとVSCodeが認識してくれます。
 
 ```
-> py -3.8 -m venv envs
-> envs/Scripts/activate
+$ py -3.8 -m venv envs
+$ envs/Scripts/activate
 ```
 
 <br/>
@@ -36,7 +36,7 @@ pythonバージョン: 3.8.1
 `requirements.txt`をもとにモジュールをpip installします。
 
 ```
-> pip install -r requirements.txt
+(envs)$ pip install -r requirements.txt
 ```
 
 <br/>
@@ -44,7 +44,7 @@ pythonバージョン: 3.8.1
 [bitbankのリポジトリ](https://github.com/bitbankinc/python-bitbankcc)から`python-bitbankcc`をpip installします。
 
 ```
-> pip install git+https://github.com/bitbankinc/python-bitbankcc.git
+(envs)$ pip install git+https://github.com/bitbankinc/python-bitbankcc.git
 ```
 
 <br/>
@@ -56,7 +56,7 @@ pythonバージョン: 3.8.1
 `main.py`を実行
 
 ```
-> python main.py
+(envs)$ python main.py
 ```
 
 <br/>
