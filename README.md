@@ -28,6 +28,7 @@ pythonバージョン: 3.8.1
 
 ```
 > py -3.8 -m venv envs
+> envs/Scripts/activate
 ```
 
 <br/>
